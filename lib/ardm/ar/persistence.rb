@@ -8,6 +8,15 @@ module Ardm
       included do
         class_attribute :raise_on_save_failure, instance_accessor: true
         self.raise_on_save_failure = false
+        after_update do |obj|
+          @__ran_save_method = nil
+        end
+        after_create do |obj|
+          @__ran_save_method = nil
+        end
+        after_commit do |obj|
+          @__ran_save_method = nil
+        end
       end
 
       module ClassMethods
