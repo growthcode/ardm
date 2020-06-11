@@ -9,15 +9,12 @@ module Ardm
         class_attribute :raise_on_save_failure, instance_accessor: true
         self.raise_on_save_failure = false
         after_update do |obj|
-          binding.pry if self.class.name == 'EmployeeForm'
           @__ran_save_method = nil
         end
         after_create do |obj|
-          binding.pry if self.class.name == 'EmployeeForm'
           @__ran_save_method = nil
         end
         after_commit do |obj|
-          binding.pry if self.class.name == 'EmployeeForm'
           @__ran_save_method = nil
         end
       end
